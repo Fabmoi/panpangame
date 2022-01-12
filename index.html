@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>panpan</title>
+	<style type="text/css">
+		canvas {
+			position: absolute;
+			top: 25px;
+			left: 600px;
+			background: transparent;
+		}
+		#background {
+			z-index: -3;
+		}
+		#background-two {
+			z-index: -2;
+		}
+		#main {
+			z-index: -1;
+		}
+		#ship {
+			z-index: 0;
+		}
+		.score {
+			text-align: center;
+			color: #FF7F00;
+			font-family: Helvetica, sans-serif;
+			cursor: default;
+		}
+		.game-over {
+			position: absolute;
+			top: 300px;
+			left: 650px;
+			color: #FF7F00;
+			font-family: Helvetica, sans-serif;
+			font-size: 30px;
+			cursor: default;
+			display: none;
+		}
+		.game-over span {
+			font-size: 20px;
+			cursor: pointer;
+			position: relative;
+			left: 50px;
+		}
+		.game-over span:hover {
+			color: #FFD700;
+		}
+		.loading {
+			position: absolute;
+			top: 300px;
+			left: 650px;
+			color: #FF7F00;
+			font-family: Helvetica, sans-serif;
+			font-size: 30px;
+			cursor: default;
+		}
+	</style>
+</head>
+<body>
+    <!-- <body onload="init()"> -->
+		        <!-- Canvas pour le background -->
+				<canvas id="background" width="400" height="720">
+				</canvas>
+				<canvas id="background-two" width="400" height="720">
+				</canvas>
+						<!-- Canvas pour ennemis et leurs missiles -->
+				<canvas id="main" width="400" height="720">
+				</canvas>
+						<!-- Canvas pour le vaisseau -->
+				<canvas id="ship" width="400" height="720">
+				</canvas>
+				
+				<div class="score">SCORE: <span id="score"></span></div>
+				<div class="game-over" id="game-over">GAME OVER<p><span onclick="game.restart()">Redémarrer</span></p></div>
+				<div class="loading" id="loading">LOADING...<p>Please wait</p></div>
+				<button id="mute" onclick="mute()">Activer / désactiver le son</button>
+			<script src="panpan-tout.js"></script>
+			<script type="text/javascript">
+				function mute() {
+					if (game.backgroundAudio.volume === .25) {
+						game.backgroundAudio.volume = 0;
+						game.gameOverAudio.volume = 0;
+					}
+					else {
+						game.backgroundAudio.volume = .25;
+						game.gameOverAudio.volume = .25;
+					}
+				}
+			</script>
+</body>
+</html>
