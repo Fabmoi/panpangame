@@ -1743,7 +1743,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.explosion = new SoundPool(20);
             this.explosion.init("explosion");
 
-            this.backgroundAudio = new Audio("sounds/music-game.mp3");
+            this.backgroundAudio = new Audio("sounds/music-game.wav");
             this.backgroundAudio.loop = true;
             this.backgroundAudio.volume = .50;
             this.backgroundAudio.load();
