@@ -8,76 +8,228 @@
 	<style type="text/css">
 		canvas {
 			position: absolute;
-			top: 25px;
+			top: 35px;
 			left: 600px;
 			background: transparent;
 		}
 		#background {
-			z-index: -3;
-		}
-		#background-two {
-			z-index: -2;
-		}
-		#main {
-			z-index: -1;
-		}
-		#ship {
 			z-index: 0;
+		}
+		#background-bright-star-one,
+		#background-bright-star-two,
+		#background-bright-star-three {
+			z-index: 2;
+		}
+		#background-classic-one,
+		#background-classic-two,
+		#background-classic-three {
+			z-index: 3;
+		}
+		#background-default-one,
+		#background-default-two,
+		#background-default-three {
+			z-index: 4;
+		}
+		#background-distant-sun-one,
+		#background-distant-sun-two,
+		#background-distant-sun-three {
+			z-index: 5;
+		}
+		#background-moon-middle {
+			z-index: 5;
+		}
+		#background-g-flare-hundred-one-one,
+		#background-g-flare-hundred-one-two,
+		#background-g-flare-hundred-one-three {
+			z-index: 6;
+		}
+		#background-g-flare-hundred-two-one,
+		#background-g-flare-hundred-two-two,
+		#background-g-flare-hundred-two-three {
+			z-index: 7;
+		}
+		#background-hidden-planet-one,
+		#background-hidden-planet-two,
+		#background-hidden-planet-three {
+			z-index: 8;
+		}
+		#background-planet-multicolor-small {
+			z-index: 11;
+		}
+		#background-planet-light-blue-small {
+			z-index: 12;
+		}
+		#background-planet-venus-small {
+			z-index: 13;
+		}
+		#background-clouds-one,
+		#background-cloud-two,
+		#background-cloud-three,
+		#background-plasma {
+			z-index: 999;
+		}
+		#ship,
+		#enemy {
+			z-index: 100;
 		}
 		.score {
 			text-align: center;
-			color: #FF7F00;
-			font-family: Helvetica, sans-serif;
+			color: rgb(0,0,0);
+			font-weight: bold;
 			cursor: default;
 		}
 		.game-over {
+			color: rgb(255,255,255);
+			font-size: 30px;
+			display: none;
+			opacity: 0.7;
 			position: absolute;
 			top: 300px;
-			left: 650px;
-			color: #FF7F00;
-			font-family: Helvetica, sans-serif;
-			font-size: 30px;
+			left: 40%;
 			cursor: default;
-			display: none;
+			z-index: 100000;
 		}
 		.game-over span {
-			font-size: 20px;
 			cursor: pointer;
-			position: relative;
-			left: 50px;
 		}
 		.game-over span:hover {
-			color: #FFD700;
+			color: rgb(255,255,255);
 		}
 		.loading {
+			color: rgb(0,0,0);
+			font-size: 30px;
 			position: absolute;
 			top: 300px;
-			left: 650px;
-			color: #FF7F00;
-			font-family: Helvetica, sans-serif;
-			font-size: 30px;
+			left: 40%;
 			cursor: default;
 		}
 	</style>
 </head>
 <body>
     <!-- <body onload="init()"> -->
-		        <!-- Canvas pour le background -->
-				<canvas id="background" width="400" height="720">
+		        		<!-- Canvas pour background -->
+				<canvas id="background" width="600" height="720">
 				</canvas>
-				<canvas id="background-two" width="400" height="720">
+
+
+		        		<!-- Canvas pour lune moyenne -->
+				<canvas id="background-moon-middle" width="600" height="720">
 				</canvas>
+						<!-- Canvas pour planète lumière bleue petite -->
+				<canvas id="background-planet-light-blue-small" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour planète multicolore petite -->
+				<canvas id="background-planet-multicolor-small" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour planète venus petite -->
+				<canvas id="background-planet-venus-small" width="600" height="720">
+				</canvas>
+
+
+		        		<!-- Canvas pour nuage 1 (orange) -->
+				<canvas id="background-clouds-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour nuage 2 (mauve) -->
+				<canvas id="background-clouds-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour nuage 3 (rose) -->
+				<canvas id="background-clouds-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour plasma 1 (multicolore) -->
+				<canvas id="background-plasma-one" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour bright-star-one -->
+				<canvas id="background-bright-star-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour bright-star-two -->
+				<canvas id="background-bright-star-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour bright-star-three -->
+				<canvas id="background-bright-star-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour classic 1 -->
+				<canvas id="background-classic-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour classic 2 -->
+				<canvas id="background-classic-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour classic 3 -->
+				<canvas id="background-classic-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour default 1 -->
+				<canvas id="background-default-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour default 2 -->
+				<canvas id="background-default-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour default 3 -->
+				<canvas id="background-default-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour distant sun 1 -->
+				<canvas id="background-distant-sun-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour distant sun 2 -->
+				<canvas id="background-distant-sun-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour distant sun 3 -->
+				<canvas id="background-distant-sun-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour g flare 101 1 -->
+				<canvas id="background-g-flare-hundred-one-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour g flare 101 2 -->
+				<canvas id="background-g-flare-hundred-one-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour g flare 101 3 -->
+				<canvas id="background-g-flare-hundred-one-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour g flare 102 1 -->
+				<canvas id="background-g-flare-hundred-two-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour g flare 102 2 -->
+				<canvas id="background-g-flare-hundred-two-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour g flare 102 3 -->
+				<canvas id="background-g-flare-hundred-two-three" width="600" height="720">
+				</canvas>
+
+
+						<!-- Canvas pour hidden planet 1 -->
+				<canvas id="background-hidden-planet-one" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour hidden planet 2 -->
+				<canvas id="background-hidden-planet-two" width="600" height="720">
+				</canvas>
+						<!-- Canvas pour hidden planet 3 -->
+				<canvas id="background-hidden-planet-three" width="600" height="720">
+				</canvas>
+
+
 						<!-- Canvas pour ennemis et leurs missiles -->
-				<canvas id="main" width="400" height="720">
+				<canvas id="enemy" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour le vaisseau -->
-				<canvas id="ship" width="400" height="720">
+						<!-- Canvas pour vaisseau -->
+				<canvas id="ship" width="600" height="720">
 				</canvas>
 				
 				<div class="score">SCORE: <span id="score"></span></div>
 				<div class="game-over" id="game-over">GAME OVER<p><span onclick="game.restart()">Redémarrer</span></p></div>
 				<div class="loading" id="loading">LOADING...<p>Please wait</p></div>
-				<button id="mute" onclick="mute()">Activer / désactiver le son</button>
+				<button id="mute" onclick="mute()">Activer / désactiver la musique</button>
 			<script src="panpan-tout.js"></script>
 			<script type="text/javascript">
 				function mute() {
