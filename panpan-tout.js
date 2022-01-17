@@ -1748,7 +1748,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.backgroundAudio.volume = .50;
             this.backgroundAudio.load();
 
-            this.gameOverAudio = new Audio("sounds/game-over.mp3");
+            this.gameOverAudio = new Audio("sounds/game_over.wav");
             this.gameOverAudio.loop = true;
             this.gameOverAudio.volume = .50;
             this.gameOverAudio.load();
