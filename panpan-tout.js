@@ -17,10 +17,19 @@ var imageRepository = new function() {         // définition des images
                 // IMAGES DU BACKGROUND
     this.background = new Image();                          // fond d'écran
 
-    this.backgroundMoonMiddle = new Image();                // lune moyenne
+    this.backgroundMoonBlue = new Image();                  // lune bleue
+    this.backgroundMoonMiddle = new Image();                // lune grise
+
+    this.backgroundPlanetPluton = new Image();              // planète pluton
+
     this.backgroundPlanetLightBlueSmall = new Image();      // planète lumière bleue petite
     this.backgroundPlanetMulticolorSmall = new Image();     // planète multicolore petite
     this.backgroundPlanetVenusSmall = new Image();          // planète venus petite
+    this.backgroundPlanetEarthBlue = new Image();           // planète terre bleue
+
+    this.backgroundPlanetLavaOne = new Image();             // planète lave 1
+    this.backgroundPlanetLavaTwo = new Image();             // planète lave 2
+    this.backgroundPlanetLavaThree = new Image();           // planète lave 3
 
     this.backgroundCloudsOne = new Image();                 // nuage 1 (orange)
     this.backgroundCloudsTwo = new Image();                 // nuage 2 (mauve)
@@ -65,7 +74,7 @@ var imageRepository = new function() {         // définition des images
     this.enemyBullet = new Image();                         // missile ennemi
 
                 // s'assurer que toutes les images soient chargées avant de commencer le jeu
-    var numImages = 34;                                     // nombre d'image ---------- !!! NE PAS OUBLIER DE MODIFIER
+    var numImages = 40;                                     // nombre d'image ---------- !!! NE PAS OUBLIER DE MODIFIER
     var numLoaded = 0;
 
                 // fonction pour charger les images avant qu'elles ne soient utilisées en jeu
@@ -81,9 +90,16 @@ var imageRepository = new function() {         // définition des images
             imageLoaded();
         };
 
-        this.backgroundMoonMiddle.onload = function() {             // lune moyenne
+        this.backgroundMoonBlue.onload = function() {               // lune bleue
             imageLoaded();
         };
+        this.backgroundMoonMiddle.onload = function() {             // lune grise
+            imageLoaded();
+        };
+        this.backgroundPlanetPluton.onload = function() {           // planète pluton
+            imageLoaded();
+        };
+
         this.backgroundPlanetLightBlueSmall.onload = function() {   // planète lumière bleue petite
             imageLoaded();
         };
@@ -91,6 +107,19 @@ var imageRepository = new function() {         // définition des images
             imageLoaded();
         };
         this.backgroundPlanetVenusSmall.onload = function() {       // planète venus petite
+            imageLoaded();
+        };
+        this.backgroundPlanetEarthBlue.onload = function() {        // planète terre bleue
+            imageLoaded();
+        };
+
+        this.backgroundPlanetLavaOne.onload = function() {          // planète lave 1
+            imageLoaded();
+        };
+        this.backgroundPlanetLavaTwo.onload = function() {          // planète lave 2
+            imageLoaded();
+        };
+        this.backgroundPlanetLavaThree.onload = function() {        // planète lave 3
             imageLoaded();
         };
 
@@ -198,10 +227,19 @@ var imageRepository = new function() {         // définition des images
                     // IMAGES DU BACKGROUND
         this.background.src = "img/background.png";                                     // fond écran
 
-        this.backgroundMoonMiddle.src = "img/moon-middle.png";                          // lune moyenne
+        this.backgroundMoonBlue.src = "img/moon-blue.png";                              // lune bleue
+        this.backgroundMoonMiddle.src = "img/moon-middle.png";                          // lune grise
+
+        this.backgroundPlanetPluton.src = "img/planet-pluton.png";                      // planète pluton
+
         this.backgroundPlanetLightBlueSmall.src = "img/planet-light-blue-small.png";    // planète lumière bleue petite
         this.backgroundPlanetMulticolorSmall.src = "img/planet-multicolor-small.png";   // planète muticolore petite
         this.backgroundPlanetVenusSmall.src = "img/planet-venus-small.png";             // planète venus petite
+        this.backgroundPlanetEarthBlue.src = "img/planet-earth-blue.png";               // planète terre bleue
+
+        this.backgroundPlanetLavaOne.src = "img/planet-lava-one.png";                   // planète lave 1
+        this.backgroundPlanetLavaTwo.src = "img/planet-lava-two.png";                   // planète lave 2
+        this.backgroundPlanetLavaThree.src = "img/planet-lava-three.png";               // planète lave 3
 
         this.backgroundCloudsOne.src = "img/clouds-1.png";                              // nuage (orange)
         this.backgroundCloudsTwo.src = "img/clouds-2.png";                              // nuage (mauve)
@@ -300,18 +338,44 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
             Background.prototype = new Drawable();
 
 
-                                                        // LUNE MOYENNE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+                                                        // LUNE BLEUE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundMoonBlue() {
+            this.speed = 1;
+                this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundMoonBlue, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = 23825;
+                    }
+                };
+        };
+            BackgroundMoonBlue.prototype = new Drawable();
+                                                        // LUNE GRISE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
         function BackgroundMoonMiddle() {
             this.speed = 1;
                 this.draw = function() {
                 this.y += this.speed;
                 this.context.drawImage(imageRepository.backgroundMoonMiddle, this.x, this.y);
                     if (this.y >= this.canvasHeight) {
-                    this.y = -825;
+                    this.y = -12825;
                     }
                 };
         };
             BackgroundMoonMiddle.prototype = new Drawable();
+
+                                                        // PLANÈTE PLUTON ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetPluton() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetPluton, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -2525;
+                    }
+            };
+        };
+        BackgroundPlanetPluton.prototype = new Drawable();
+
                                                         // PLANÈTE LUMIÈRE BLEUE PETITE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
         function BackgroundPlanetLightBlueSmall() {
             this.speed = 1;
@@ -319,7 +383,7 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
                 this.y += this.speed;
                 this.context.drawImage(imageRepository.backgroundPlanetLightBlueSmall, this.x, this.y);
                     if (this.y >= this.canvasHeight) {
-                    this.y = -525;
+                    this.y = -3525;
                     }
             };
         };
@@ -348,6 +412,55 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
             };
         };
             BackgroundPlanetVenusSmall.prototype = new Drawable();
+                                                        // PLANÈTE TERRE BLEUE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetEarthBlue() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetEarthBlue, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -21525;
+                    }
+            };
+        };
+            BackgroundPlanetEarthBlue.prototype = new Drawable();
+            
+                                                        // PLANÈTE LAVE 1 ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetLavaOne() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetLavaOne, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -17925;
+                    }
+            };
+        };
+            BackgroundPlanetLavaOne.prototype = new Drawable();
+                                                        // PLANÈTE LAVE 2 ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetLavaTwo() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetLavaTwo, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -23585;
+                    }
+            };
+        };
+            BackgroundPlanetLavaTwo.prototype = new Drawable();
+                                                        // PLANÈTE LAVE 3 ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetLavaThree() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetLavaThree, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -39515;
+                    }
+            };
+        };
+            BackgroundPlanetLavaThree.prototype = new Drawable();
 
 
                                                         // NUAGE 1 (ORANGE) ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
@@ -1163,10 +1276,19 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
                                         // obtenir les éléments du !!! CANVAS !!!
         this.bgCanvas = document.getElementById('background');                                              // fond d'écran
 
-        this.moonMiddleCanvas = document.getElementById('background-moon-middle');                          // lune moyenne
+        this.moonBlueCanvas = document.getElementById('background-moon-blue');                              // lune bleue
+        this.moonMiddleCanvas = document.getElementById('background-moon-middle');                          // lune grise
+
+        this.planetPlutonCanvas = document.getElementById('background-planet-pluton');                      // planète pluton
+
         this.planetLightBlueSmallCanvas = document.getElementById('background-planet-light-blue-small');    // planète lumière bleue petite
         this.planetMulticolorSmallCanvas = document.getElementById('background-planet-multicolor-small');   // planète multicolore petite
         this.planetVenusSmallCanvas = document.getElementById('background-planet-venus-small');             // planète venus petite
+        this.planetEarthBlueCanvas = document.getElementById('background-planet-earth-blue');               // planète terre bleue
+
+        this.planetLavaOneCanvas = document.getElementById('background-planet-lava-one');                   // planète lave 1
+        this.planetLavaTwoCanvas = document.getElementById('background-planet-lava-two');                   // planète lave 2
+        this.planetLavaThreeCanvas = document.getElementById('background-planet-lava-three');               // planète lave 3
         
         this.cloudOneCanvas = document.getElementById('background-clouds-one');                             // nuage 1 (orange)
         this.cloudTwoCanvas = document.getElementById('background-clouds-two');                             // nuage 2 (mauve)
@@ -1209,10 +1331,19 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         if (this.bgCanvas.getContext) {
             this.bgContext = this.bgCanvas.getContext('2d');                        // fond d'écran
 
-            this.bgContext = this.moonMiddleCanvas.getContext('2d');                // lune moyenne
+            this.bgContext = this.moonBlueCanvas.getContext('2d');                  // lune bleue
+            this.bgContext = this.moonMiddleCanvas.getContext('2d');                // lune grise
+
+            this.bgContext = this.planetPlutonCanvas.getContext('2d');              // planète pluton
+
             this.bgContext = this.planetLightBlueSmallCanvas.getContext('2d');      // planète lumière bleue petite
             this.bgContext = this.planetMulticolorSmallCanvas.getContext('2d');     // planète multicolore petite
             this.bgContext = this.planetVenusSmallCanvas.getContext('2d');          // planète venus petite
+            this.bgContext = this.planetEarthBlueCanvas.getContext('2d');           // planète terre bleue
+
+            this.bgContext = this.planetLavaOneCanvas.getContext('2d');             // planète lave 1
+            this.bgContext = this.planetLavaTwoCanvas.getContext('2d');             // planète lave 2
+            this.bgContext = this.planetLavaThreeCanvas.getContext('2d');           // planète lave 3
 
             this.bgContext = this.cloudOneCanvas.getContext('2d');                  // nuage 1 (orange)
             this.bgContext = this.cloudTwoCanvas.getContext('2d');                  // nuage 2 (mauve)
@@ -1248,8 +1379,8 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.bgContext = this.hiddenPlanetTwoCanvas.getContext('2d');           // hidden planet 2
             this.bgContext = this.hiddenPlanetThreeCanvas.getContext('2d');         // hidden planet 3
 
-            this.shipContext = this.shipCanvas.getContext('2d');                // vaisseau joueur
-            this.enemyContext = this.enemyCanvas.getContext('2d');              // vaisseau ennemi
+            this.shipContext = this.shipCanvas.getContext('2d');                    // vaisseau joueur
+            this.enemyContext = this.enemyCanvas.getContext('2d');                  // vaisseau ennemi
 
                                         // contenir infos, contexte et canvas de chaque objet
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ FOND ÉCRAN
@@ -1258,11 +1389,21 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             Background.prototype.canvasHeight = this.bgCanvas.height;
 
 
-
-                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE MOYENNE
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE BLEUE
+            BackgroundMoonBlue.prototype.context = this.bgContext;
+            BackgroundMoonBlue.prototype.canvasWidth = this.moonBlueCanvas.width;
+            BackgroundMoonBlue.prototype.canvasHeight = this.moonBlueCanvas.height;
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE GRISE
             BackgroundMoonMiddle.prototype.context = this.bgContext;
             BackgroundMoonMiddle.prototype.canvasWidth = this.moonMiddleCanvas.width;
             BackgroundMoonMiddle.prototype.canvasHeight = this.moonMiddleCanvas.height;
+
+
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE PLUTON
+            BackgroundPlanetPluton.prototype.context = this.bgContext;
+            BackgroundPlanetPluton.prototype.canvasWidth = this.planetPlutonCanvas.width;
+            BackgroundPlanetPluton.prototype.canvasHeight = this.planetPlutonCanvas.height;
+
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LUMIÈRE BLEUE PETITE
             BackgroundPlanetLightBlueSmall.prototype.context = this.bgContext;
@@ -1278,7 +1419,24 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundPlanetVenusSmall.prototype.context = this.bgContext;
             BackgroundPlanetVenusSmall.prototype.canvasWidth = this.planetVenusSmallCanvas.width;
             BackgroundPlanetVenusSmall.prototype.canvasHeight = this.planetVenusSmallCanvas.height;
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE TERRE BLEUE
+            BackgroundPlanetEarthBlue.prototype.context = this.bgContext;
+            BackgroundPlanetEarthBlue.prototype.canvasWidth = this.planetEarthBlueCanvas.width;
+            BackgroundPlanetEarthBlue.prototype.canvasHeight = this.planetEarthBlueCanvas.height;
 
+
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 1
+            BackgroundPlanetLavaOne.prototype.context = this.bgContext;
+            BackgroundPlanetLavaOne.prototype.canvasWidth = this.planetLavaOneCanvas.width;
+            BackgroundPlanetLavaOne.prototype.canvasHeight = this.planetLavaOneCanvas.height;
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 2
+            BackgroundPlanetLavaTwo.prototype.context = this.bgContext;
+            BackgroundPlanetLavaTwo.prototype.canvasWidth = this.planetLavaTwoCanvas.width;
+            BackgroundPlanetLavaTwo.prototype.canvasHeight = this.planetLavaTwoCanvas.height;
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 3
+            BackgroundPlanetLavaThree.prototype.context = this.bgContext;
+            BackgroundPlanetLavaThree.prototype.canvasWidth = this.planetLavaThreeCanvas.width;
+            BackgroundPlanetLavaThree.prototype.canvasHeight = this.planetLavaThreeCanvas.height;
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ NUAGE 1 (ORANGE)
@@ -1295,12 +1453,10 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundCloudsThree.prototype.canvasHeight = this.cloudThreeCanvas.height;
 
 
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLASMA 1 (MULTICOLORE)
             BackgroundPlasmaOne.prototype.context = this.bgContext;
             BackgroundPlasmaOne.prototype.canvasWidth = this.plasmaOneCanvas.width;
             BackgroundPlasmaOne.prototype.canvasHeight = this.plasmaOneCanvas.height;
-
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ BRIGHT STAR 1
@@ -1317,7 +1473,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundBrightStarThree.prototype.canvasHeight = this.brightStarThreeCanvas.height;
 
 
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ CLASSIC 1
             BackgroundClassicOne.prototype.context = this.bgContext;
             BackgroundClassicOne.prototype.canvasWidth = this.classicOneCanvas.width;
@@ -1330,7 +1485,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundClassicThree.prototype.context = this.bgContext;
             BackgroundClassicThree.prototype.canvasWidth = this.classicThreeCanvas.width;
             BackgroundClassicThree.prototype.canvasHeight = this.classicThreeCanvas.height;
-
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ DEFAULT 1
@@ -1347,7 +1501,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundDefaultThree.prototype.canvasHeight = this.defaultThreeCanvas.height;
 
 
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ DISTANT SUN 1
             BackgroundDistantSunOne.prototype.context = this.bgContext;
             BackgroundDistantSunOne.prototype.canvasWidth = this.distantSunOneCanvas.width;
@@ -1360,7 +1513,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundDistantSunThree.prototype.context = this.bgContext;
             BackgroundDistantSunThree.prototype.canvasWidth = this.distantSunThreeCanvas.width;
             BackgroundDistantSunThree.prototype.canvasHeight = this.distantSunThreeCanvas.height;
-
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ G FLARE 101 1
@@ -1377,7 +1529,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundGFlareHundredOneThree.prototype.canvasHeight = this.gFlareHundredOneThreeCanvas.height;
 
 
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ G FLARE 102 1
             BackgroundGFlareHundredTwoOne.prototype.context = this.bgContext;
             BackgroundGFlareHundredTwoOne.prototype.canvasWidth = this.gFlareHundredTwoOneCanvas.width;
@@ -1390,7 +1541,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundGFlareHundredTwoThree.prototype.context = this.bgContext;
             BackgroundGFlareHundredTwoThree.prototype.canvasWidth = this.gFlareHundredTwoThreeCanvas.width;
             BackgroundGFlareHundredTwoThree.prototype.canvasHeight = this.gFlareHundredTwoThreeCanvas.height;
-
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ HIDDEN PLANET 1
@@ -1430,23 +1580,42 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.background.init(0,0);
 
 
-
-                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE 1 (MOYENNE)
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE BLEUE
+            this.backgroundMoonBlue = new BackgroundMoonBlue();
+            this.backgroundMoonBlue.init('425',-1640);
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ LUNE GRISE
             this.backgroundMoonMiddle = new BackgroundMoonMiddle();
             this.backgroundMoonMiddle.init('150',-325);
+
+
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE PLUTON
+            this.backgroundPlanetPluton = new BackgroundPlanetPluton();
+            this.backgroundPlanetPluton.init(0,2000);
+
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LUMIÈRE BLEUE PETITE
             this.backgroundPlanetLightBlueSmall = new BackgroundPlanetLightBlueSmall();
             this.backgroundPlanetLightBlueSmall.init('275',-225);
-
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE MULTICOLORE PETITE
             this.backgroundPlanetMulticolorSmall = new BackgroundPlanetMulticolorSmall();
             this.backgroundPlanetMulticolorSmall.init('475',-725);
-
-                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE MULTICOLORE PETITE
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE VENUS PETITE
             this.backgroundPlanetVenusSmall = new BackgroundPlanetVenusSmall();
             this.backgroundPlanetVenusSmall.init('95',-1025);
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE TERRE BLEUE
+            this.backgroundPlanetEarthBlue = new BackgroundPlanetEarthBlue();
+            this.backgroundPlanetEarthBlue.init('395',-2125);
 
+
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 1
+            this.backgroundPlanetLavaOne = new BackgroundPlanetLavaOne();
+            this.backgroundPlanetLavaOne.init('395',-7125);
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 2
+            this.backgroundPlanetLavaTwo = new BackgroundPlanetLavaTwo();
+            this.backgroundPlanetLavaTwo.init('245',-12635);
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 3
+            this.backgroundPlanetLavaThree = new BackgroundPlanetLavaThree();
+            this.backgroundPlanetLavaThree.init('465',-26810);
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ NUAGE 1 (ORANGE)
@@ -1460,11 +1629,9 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.backgroundCloudsThree.init(0,-3070);
 
 
-
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLASMA 1 (MULTICOLORE)
             this.backgroundPlasmaOne = new BackgroundPlasmaOne();
             this.backgroundPlasmaOne.init(0,-4725);
-
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ BRIGHT STAR 1
@@ -1476,7 +1643,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ BRIGHT STAR 3
             this.backgroundBrightStarThree = new BackgroundBrightStarThree();
             this.backgroundBrightStarThree.init(0,-23060);
-
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ CLASSIC 1
@@ -1502,7 +1668,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.backgroundDefaultThree.init(0,-36540);
 
 
-
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ DISTANT SUN 1
             this.backgroundDistantSunOne = new BackgroundDistantSunOne();
             this.backgroundDistantSunOne.init(0,-2925);
@@ -1514,7 +1679,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.backgroundDistantSunThree.init(0,-38925);
 
 
-
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ G FLARE 101 1
             this.backgroundGFlareHundredOneOne = new BackgroundGFlareHundredOneOne();
             this.backgroundGFlareHundredOneOne.init(0,-5125);
@@ -1524,7 +1688,6 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ G FLARE 101 3
             this.backgroundGFlareHundredOneThree = new BackgroundGFlareHundredOneThree();
             this.backgroundGFlareHundredOneThree.init(0,-9385);
-
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ G FLARE 102 1
@@ -1580,14 +1743,14 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.explosion = new SoundPool(20);
             this.explosion.init("explosion");
 
-            this.backgroundAudio = new Audio("sounds/music.wav");
+            this.backgroundAudio = new Audio("sounds/music-game.mp3");
             this.backgroundAudio.loop = true;
-            this.backgroundAudio.volume = .25;
+            this.backgroundAudio.volume = .50;
             this.backgroundAudio.load();
 
-            this.gameOverAudio = new Audio("sounds/game_over.wav");
+            this.gameOverAudio = new Audio("sounds/game-over.mp3");
             this.gameOverAudio.loop = true;
-            this.gameOverAudio.volume = .25;
+            this.gameOverAudio.volume = .50;
             this.gameOverAudio.load();
 
             this.checkAudio = window.setInterval(function(){checkReadyState()},1000);
@@ -1631,10 +1794,19 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         document.getElementById('game-over').style.display = "none";
         this.bgContext.clearRect(0,0, this.bgCanvas.width, this.bgCanvas.height);                                          // fond d'écran
 
-        this.bgContext.clearRect(0,0, this.moonMiddleCanvas.width, this.moonMiddleCanvas.height);                          // lune moyenne
+        this.bgContext.clearRect(0,0, this.moonBlueCanvas.width, this.moonBlueCanvas.height);                              // lune bleue
+        this.bgContext.clearRect(0,0, this.moonMiddleCanvas.width, this.moonMiddleCanvas.height);                          // lune grise
+
+        this.bgContext.clearRect(0,0, this.planetPlutonCanvas.width, this.planetPlutonCanvas.height);                      // planète pluton
+
         this.bgContext.clearRect(0,0, this.planetLightBlueSmallCanvas.width, this.planetLightBlueSmallCanvas.height);      // planète lumière bleue petite
         this.bgContext.clearRect(0,0, this.planetMulticolorSmallCanvas.width, this.planetMulticolorSmallCanvas.height);    // planète multicolore petite
         this.bgContext.clearRect(0,0, this.planetVenusSmallCanvas.width, this.planetMulticolorSmallCanvas.height);         // planète venus petite
+        this.bgContext.clearRect(0,0, this.planetEarthBlueCanvas.width, this.planetEarthBlueCanvas.height);                // planète terre bleue
+
+        this.bgContext.clearRect(0,0, this.planetLavaOneCanvas.width, this.planetLavaOneCanvas.height);                    // planète lave 1
+        this.bgContext.clearRect(0,0, this.planetLavaTwoCanvas.width, this.planetLavaTwoCanvas.height);                    // planète lave 2
+        this.bgContext.clearRect(0,0, this.planetLavaThreeCanvas.width, this.planetLavaThreeCanvas.height);                // planète lave 3
 
         this.bgContext.clearRect(0,0, this.cloudOneCanvas.width, this.cloudOneCanvas.height);                              // nuage 1 (orange)
         this.bgContext.clearRect(0,0, this.cloudTwoCanvas.width, this.cloudTwoCanvas.height);                              // nuage 2 (mauve)
@@ -1675,12 +1847,21 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
 
         this.quadTree.clear();
 
-        this.background.init(0,0);                                  // fond d'écran
+        this.background.init(0,0);                                   // fond d'écran
 
-        this.backgroundMoonMiddle.init('150',-125);                 // lune moyenne
-        this.backgroundPlanetLightBlueSmall.init('275',-325);       // planète lumière bleue petite
-        this.backgroundPlanetMulticolorSmall.init('375',-425);      // planète multicolore petite
-        this.backgroundPlanetVenusSmall.init('95',-425);            // planète venus petite
+        this.backgroundMoonMiddle.init('425',-1125);                 // lune bleue
+        this.backgroundMoonMiddle.init('150',-325);                  // lune grise
+
+        this.backgroundPlanetPluton.init(0,59655);                   // planète pluton
+
+        this.backgroundPlanetLightBlueSmall.init('275',-325);        // planète lumière bleue petite
+        this.backgroundPlanetMulticolorSmall.init('375',-425);       // planète multicolore petite
+        this.backgroundPlanetVenusSmall.init('95',-425);             // planète venus petite
+        this.backgroundPlanetVenusSmall.init('95',-2425);            // planète terre bleue
+
+        this.backgroundPlanetLavaOne.init('155',-2425);              // planète lave 1
+        this.backgroundPlanetLavaTwo.init('295',-12425);             // planète lave 2
+        this.backgroundPlanetLavaThree.init('395',-22425);           // planète lave 3
 
         this.backgroundCloudsOne.init(0,-500);                       // nuage 1 (orange)
         this.backgroundCloudsTwo.init(0,-1000);                      // nuage 2 (mauve)
@@ -1756,7 +1937,7 @@ function SoundPool(maxSize) {
 			for (var i = 0; i < size; i++) {
 				// initialiser le son
 				laser = new Audio("sounds/laser.wav");
-				laser.volume = .12;
+				laser.volume = .0;
 				laser.load();
 				pool[i] = laser;
 			}
@@ -1764,7 +1945,7 @@ function SoundPool(maxSize) {
 		else if (object == "explosion") {
 			for (var i = 0; i < size; i++) {
 				var explosion = new Audio("sounds/explosion.wav");
-				explosion.volume = .1;
+				explosion.volume = .0;
 				explosion.load();
 				pool[i] = explosion;
 			}
@@ -1810,10 +1991,19 @@ function animate() {
                 // objets du background
     game.background.draw();                         // fond d'écran
 
-    game.backgroundMoonMiddle.draw();               // lune moyenne
+    game.backgroundMoonBlue.draw();                 // lune bleue
+    game.backgroundMoonMiddle.draw();               // lune grise
+
+    game.backgroundPlanetPluton.draw();             // planète pluton
+
     game.backgroundPlanetLightBlueSmall.draw();     // planète lumière bleue petite
     game.backgroundPlanetMulticolorSmall.draw();    // planète multicolore petite
     game.backgroundPlanetVenusSmall.draw();         // planète venus petite
+    game.backgroundPlanetEarthBlue.draw();          // planète terre bleue
+
+    game.backgroundPlanetLavaOne.draw();            // planète lave 1
+    game.backgroundPlanetLavaTwo.draw();            // planète lave 2
+    game.backgroundPlanetLavaThree.draw();          // planète lave 3
 
     game.backgroundCloudsOne.draw();                // nuage 1 (orange)
     game.backgroundCloudsTwo.draw();                // nuage 2 (mauve)

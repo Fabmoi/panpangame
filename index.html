@@ -35,23 +35,24 @@
 		#background-distant-sun-three {
 			z-index: 5;
 		}
+		#background-moon-blue,
 		#background-moon-middle {
-			z-index: 5;
+			z-index: 6;
 		}
 		#background-g-flare-hundred-one-one,
 		#background-g-flare-hundred-one-two,
 		#background-g-flare-hundred-one-three {
-			z-index: 6;
+			z-index: 7;
 		}
 		#background-g-flare-hundred-two-one,
 		#background-g-flare-hundred-two-two,
 		#background-g-flare-hundred-two-three {
-			z-index: 7;
+			z-index: 8;
 		}
 		#background-hidden-planet-one,
 		#background-hidden-planet-two,
 		#background-hidden-planet-three {
-			z-index: 8;
+			z-index: 9;
 		}
 		#background-planet-multicolor-small {
 			z-index: 11;
@@ -62,11 +63,22 @@
 		#background-planet-venus-small {
 			z-index: 13;
 		}
+		#background-planet-earth-blue {
+			z-index: 14;
+		}
+		#background-planet-lava-one,
+		#background-planet-lava-two,
+		#background-planet-lava-three {
+			z-index: 20;
+		}
 		#background-clouds-one,
 		#background-cloud-two,
 		#background-cloud-three,
 		#background-plasma {
 			z-index: 999;
+		}
+		#background-planet-pluton {
+			z-index: 50;
 		}
 		#ship,
 		#enemy {
@@ -112,117 +124,141 @@
 				</canvas>
 
 
-		        		<!-- Canvas pour lune moyenne -->
+		        															<!-- Canvas pour lune moyenne -->
 				<canvas id="background-moon-middle" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour planète lumière bleue petite -->
+		        															<!-- Canvas pour lune bleue -->
+				<canvas id="background-moon-blue" width="600" height="720">
+				</canvas>
+
+
+																			<!-- Canvas pour planète pluton -->
+				<canvas id="background-planet-pluton" width="600" height="720">
+				</canvas>
+
+
+																			<!-- Canvas pour planète lave 1 -->
+				<canvas id="background-planet-lava-one" width="600" height="720">
+				</canvas>
+																			<!-- Canvas pour planète lave 2 -->
+				<canvas id="background-planet-lava-two" width="600" height="720">
+				</canvas>
+																			<!-- Canvas pour planète lave 3 -->
+				<canvas id="background-planet-lava-three" width="600" height="720">
+				</canvas>
+
+
+																			<!-- Canvas pour planète lumière bleue petite -->
 				<canvas id="background-planet-light-blue-small" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour planète multicolore petite -->
+																			<!-- Canvas pour planète multicolore petite -->
 				<canvas id="background-planet-multicolor-small" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour planète venus petite -->
+																			<!-- Canvas pour planète venus petite -->
 				<canvas id="background-planet-venus-small" width="600" height="720">
 				</canvas>
+																			<!-- Canvas pour planète terre bleue -->
+				<canvas id="background-planet-earth-blue" width="600" height="720">
+				</canvas>
 
 
-		        		<!-- Canvas pour nuage 1 (orange) -->
+		        															<!-- Canvas pour nuage 1 (orange) -->
 				<canvas id="background-clouds-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour nuage 2 (mauve) -->
+																			<!-- Canvas pour nuage 2 (mauve) -->
 				<canvas id="background-clouds-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour nuage 3 (rose) -->
+																			<!-- Canvas pour nuage 3 (rose) -->
 				<canvas id="background-clouds-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour plasma 1 (multicolore) -->
+																			<!-- Canvas pour plasma 1 (multicolore) -->
 				<canvas id="background-plasma-one" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour bright-star-one -->
+																			<!-- Canvas pour bright-star-one -->
 				<canvas id="background-bright-star-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour bright-star-two -->
+																			<!-- Canvas pour bright-star-two -->
 				<canvas id="background-bright-star-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour bright-star-three -->
+																			<!-- Canvas pour bright-star-three -->
 				<canvas id="background-bright-star-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour classic 1 -->
+																			<!-- Canvas pour classic 1 -->
 				<canvas id="background-classic-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour classic 2 -->
+																			<!-- Canvas pour classic 2 -->
 				<canvas id="background-classic-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour classic 3 -->
+																			<!-- Canvas pour classic 3 -->
 				<canvas id="background-classic-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour default 1 -->
+																			<!-- Canvas pour default 1 -->
 				<canvas id="background-default-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour default 2 -->
+																			<!-- Canvas pour default 2 -->
 				<canvas id="background-default-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour default 3 -->
+																			<!-- Canvas pour default 3 -->
 				<canvas id="background-default-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour distant sun 1 -->
+																			<!-- Canvas pour distant sun 1 -->
 				<canvas id="background-distant-sun-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour distant sun 2 -->
+																			<!-- Canvas pour distant sun 2 -->
 				<canvas id="background-distant-sun-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour distant sun 3 -->
+																			<!-- Canvas pour distant sun 3 -->
 				<canvas id="background-distant-sun-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour g flare 101 1 -->
+																			<!-- Canvas pour g flare 101 1 -->
 				<canvas id="background-g-flare-hundred-one-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour g flare 101 2 -->
+																			<!-- Canvas pour g flare 101 2 -->
 				<canvas id="background-g-flare-hundred-one-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour g flare 101 3 -->
+																			<!-- Canvas pour g flare 101 3 -->
 				<canvas id="background-g-flare-hundred-one-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour g flare 102 1 -->
+																			<!-- Canvas pour g flare 102 1 -->
 				<canvas id="background-g-flare-hundred-two-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour g flare 102 2 -->
+																			<!-- Canvas pour g flare 102 2 -->
 				<canvas id="background-g-flare-hundred-two-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour g flare 102 3 -->
+																			<!-- Canvas pour g flare 102 3 -->
 				<canvas id="background-g-flare-hundred-two-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour hidden planet 1 -->
+																			<!-- Canvas pour hidden planet 1 -->
 				<canvas id="background-hidden-planet-one" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour hidden planet 2 -->
+																			<!-- Canvas pour hidden planet 2 -->
 				<canvas id="background-hidden-planet-two" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour hidden planet 3 -->
+																			<!-- Canvas pour hidden planet 3 -->
 				<canvas id="background-hidden-planet-three" width="600" height="720">
 				</canvas>
 
 
-						<!-- Canvas pour ennemis et leurs missiles -->
+																			<!-- Canvas pour ennemis et leurs missiles -->
 				<canvas id="enemy" width="600" height="720">
 				</canvas>
-						<!-- Canvas pour vaisseau -->
+																			<!-- Canvas pour vaisseau -->
 				<canvas id="ship" width="600" height="720">
 				</canvas>
 				
