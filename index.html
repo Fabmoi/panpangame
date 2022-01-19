@@ -5,85 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>panpan</title>
-	<style type="text/css">
+<style type="text/css">
 		canvas {
 			position: absolute;
 			top: 35px;
 			left: 600px;
-			background: transparent;
 		}
+		
+		/*
 		#background {
 			z-index: 0;
 		}
 		#background-bright-star-one,
 		#background-bright-star-two,
-		#background-bright-star-three {
-			z-index: 2;
-		}
+		#background-bright-star-three,
 		#background-classic-one,
 		#background-classic-two,
-		#background-classic-three {
-			z-index: 3;
-		}
+		#background-classic-three,
 		#background-default-one,
 		#background-default-two,
-		#background-default-three {
-			z-index: 4;
-		}
+		#background-default-three,
 		#background-distant-sun-one,
 		#background-distant-sun-two,
-		#background-distant-sun-three {
-			z-index: 5;
-		}
-		#background-moon-blue,
-		#background-moon-middle {
-			z-index: 6;
-		}
+		#background-distant-sun-three,
 		#background-g-flare-hundred-one-one,
 		#background-g-flare-hundred-one-two,
-		#background-g-flare-hundred-one-three {
-			z-index: 7;
-		}
+		#background-g-flare-hundred-one-three,
 		#background-g-flare-hundred-two-one,
 		#background-g-flare-hundred-two-two,
-		#background-g-flare-hundred-two-three {
-			z-index: 8;
-		}
+		#background-g-flare-hundred-two-three,
 		#background-hidden-planet-one,
 		#background-hidden-planet-two,
 		#background-hidden-planet-three {
-			z-index: 9;
+			z-index: 1;
 		}
-		#background-planet-multicolor-small {
-			z-index: 11;
-		}
-		#background-planet-light-blue-small {
-			z-index: 12;
-		}
-		#background-planet-venus-small {
-			z-index: 13;
-		}
-		#background-planet-earth-blue {
-			z-index: 14;
-		}
+		#background-moon-blue,
+		#background-moon-middle,
+		#background-planet-multicolor-small,
+		#background-planet-light-blue-small,
+		#background-planet-venus-small,
+		#background-planet-earth-blue,
+		#background-planet-desert,
 		#background-planet-lava-one,
 		#background-planet-lava-two,
 		#background-planet-lava-three {
-			z-index: 20;
+			z-index: 2;
+		}
+		#background-planet-pluton {
+			z-index: 5;
 		}
 		#background-clouds-one,
 		#background-cloud-two,
 		#background-cloud-three,
 		#background-plasma {
-			z-index: 999;
-		}
-		#background-planet-pluton {
-			z-index: 50;
+			z-index: 10;
 		}
 		#ship,
 		#enemy {
-			z-index: 100;
+			z-index: 15;
 		}
+		*/
 		.score {
 			text-align: center;
 			color: rgb(0,0,0);
@@ -99,7 +80,7 @@
 			top: 300px;
 			left: 40%;
 			cursor: default;
-			z-index: 100000;
+			z-index: 9999;
 		}
 		.game-over span {
 			cursor: pointer;
@@ -115,11 +96,10 @@
 			left: 40%;
 			cursor: default;
 		}
-	</style>
+</style>
 </head>
 <body>
-    <!-- <body onload="init()"> -->
-		        		<!-- Canvas pour background -->
+		        															<!-- Canvas pour background -->
 				<canvas id="background" width="600" height="720">
 				</canvas>
 
@@ -159,6 +139,9 @@
 				</canvas>
 																			<!-- Canvas pour planète terre bleue -->
 				<canvas id="background-planet-earth-blue" width="600" height="720">
+				</canvas>
+																			<!-- Canvas pour planète déseet -->
+				<canvas id="background-planet-desert" width="600" height="720">
 				</canvas>
 
 
@@ -265,17 +248,17 @@
 				<div class="score">SCORE: <span id="score"></span></div>
 				<div class="game-over" id="game-over">GAME OVER<p><span onclick="game.restart()">Redémarrer</span></p></div>
 				<div class="loading" id="loading">LOADING...<p>Please wait</p></div>
-				<button id="mute" onclick="mute()">Activer / désactiver la musique</button>
+				<button id="mute" onclick="musicMute()">Activer / désactiver la musique</button>
 			<script src="panpan-tout.js"></script>
 			<script type="text/javascript">
-				function mute() {
-					if (game.backgroundAudio.volume === .25) {
+				function musicMute() {
+					if (game.backgroundAudio.volume === .50) {
 						game.backgroundAudio.volume = 0;
 						game.gameOverAudio.volume = 0;
 					}
 					else {
-						game.backgroundAudio.volume = .25;
-						game.gameOverAudio.volume = .25;
+						game.backgroundAudio.volume = .50;
+						game.gameOverAudio.volume = .50;
 					}
 				}
 			</script>

@@ -12,7 +12,7 @@ objet imageRepository contenant toutes les images du jeu afin de ne les créer q
 pattern Singleton (ensemble ne comprenant qu'un seul élément)
 */
 
-var imageRepository = new function() {         // définition des images
+var imageRepository = new function() {           // définition des images
 
                 // IMAGES DU BACKGROUND
     this.background = new Image();                          // fond d'écran
@@ -26,6 +26,7 @@ var imageRepository = new function() {         // définition des images
     this.backgroundPlanetMulticolorSmall = new Image();     // planète multicolore petite
     this.backgroundPlanetVenusSmall = new Image();          // planète venus petite
     this.backgroundPlanetEarthBlue = new Image();           // planète terre bleue
+    this.backgroundPlanetDesert = new Image();              // planète désert
 
     this.backgroundPlanetLavaOne = new Image();             // planète lave 1
     this.backgroundPlanetLavaTwo = new Image();             // planète lave 2
@@ -74,7 +75,7 @@ var imageRepository = new function() {         // définition des images
     this.enemyBullet = new Image();                         // missile ennemi
 
                 // s'assurer que toutes les images soient chargées avant de commencer le jeu
-    var numImages = 40;                                     // nombre d'image ---------- !!! NE PAS OUBLIER DE MODIFIER
+    var numImages = 41;                                     // nombre d'image ---------- !!! NE PAS OUBLIER DE MODIFIER
     var numLoaded = 0;
 
                 // fonction pour charger les images avant qu'elles ne soient utilisées en jeu
@@ -110,6 +111,9 @@ var imageRepository = new function() {         // définition des images
             imageLoaded();
         };
         this.backgroundPlanetEarthBlue.onload = function() {        // planète terre bleue
+            imageLoaded();
+        };
+        this.backgroundPlanetDesert.onload = function() {           // planète désert
             imageLoaded();
         };
 
@@ -236,6 +240,7 @@ var imageRepository = new function() {         // définition des images
         this.backgroundPlanetMulticolorSmall.src = "img/planet-multicolor-small.png";   // planète muticolore petite
         this.backgroundPlanetVenusSmall.src = "img/planet-venus-small.png";             // planète venus petite
         this.backgroundPlanetEarthBlue.src = "img/planet-earth-blue.png";               // planète terre bleue
+        this.backgroundPlanetDesert.src = "img/planet-desert.png";                      // planète désert
 
         this.backgroundPlanetLavaOne.src = "img/planet-lava-one.png";                   // planète lave 1
         this.backgroundPlanetLavaTwo.src = "img/planet-lava-two.png";                   // planète lave 2
@@ -363,6 +368,7 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
         };
             BackgroundMoonMiddle.prototype = new Drawable();
 
+
                                                         // PLANÈTE PLUTON ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
         function BackgroundPlanetPluton() {
             this.speed = 1;
@@ -370,11 +376,12 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
                 this.y += this.speed;
                 this.context.drawImage(imageRepository.backgroundPlanetPluton, this.x, this.y);
                     if (this.y >= this.canvasHeight) {
-                    this.y = -2525;
+                    this.y = -2360;
                     }
             };
         };
         BackgroundPlanetPluton.prototype = new Drawable();
+
 
                                                         // PLANÈTE LUMIÈRE BLEUE PETITE ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
         function BackgroundPlanetLightBlueSmall() {
@@ -424,7 +431,20 @@ groupe d'image du backgound héritent des propriétés de Drawable (grâce à pr
             };
         };
             BackgroundPlanetEarthBlue.prototype = new Drawable();
-            
+                                                        // PLANÈTE DÉSERT ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
+        function BackgroundPlanetDesert() {
+            this.speed = 1;
+            this.draw = function() {
+                this.y += this.speed;
+                this.context.drawImage(imageRepository.backgroundPlanetDesert, this.x, this.y);
+                    if (this.y >= this.canvasHeight) {
+                    this.y = -28945;
+                    }
+            };
+        };
+            BackgroundPlanetDesert.prototype = new Drawable();
+
+
                                                         // PLANÈTE LAVE 1 ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓
         function BackgroundPlanetLavaOne() {
             this.speed = 1;
@@ -1209,8 +1229,8 @@ function Enemy() {
             this.speedY = speed;
             this.alive = true;
             this.leftEdge = this.x - 90;
-            this.rightEdge = this.x + 90;
-            this.bottomEdge = this.y + 140;
+            this.rightEdge = this.x - 20;
+            this.bottomEdge = this.y + 150;
         };
 
         // mouvement vaisseau ennemi
@@ -1285,6 +1305,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         this.planetMulticolorSmallCanvas = document.getElementById('background-planet-multicolor-small');   // planète multicolore petite
         this.planetVenusSmallCanvas = document.getElementById('background-planet-venus-small');             // planète venus petite
         this.planetEarthBlueCanvas = document.getElementById('background-planet-earth-blue');               // planète terre bleue
+        this.planetDesertCanvas = document.getElementById('background-planet-desert');                      // planète désert
 
         this.planetLavaOneCanvas = document.getElementById('background-planet-lava-one');                   // planète lave 1
         this.planetLavaTwoCanvas = document.getElementById('background-planet-lava-two');                   // planète lave 2
@@ -1340,6 +1361,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.bgContext = this.planetMulticolorSmallCanvas.getContext('2d');     // planète multicolore petite
             this.bgContext = this.planetVenusSmallCanvas.getContext('2d');          // planète venus petite
             this.bgContext = this.planetEarthBlueCanvas.getContext('2d');           // planète terre bleue
+            this.bgContext = this.planetDesertCanvas.getContext('2d');              // planète désert
 
             this.bgContext = this.planetLavaOneCanvas.getContext('2d');             // planète lave 1
             this.bgContext = this.planetLavaTwoCanvas.getContext('2d');             // planète lave 2
@@ -1409,12 +1431,10 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundPlanetLightBlueSmall.prototype.context = this.bgContext;
             BackgroundPlanetLightBlueSmall.prototype.canvasWidth = this.planetLightBlueSmallCanvas.width;
             BackgroundPlanetLightBlueSmall.prototype.canvasHeight = this.planetLightBlueSmallCanvas.height;
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE MULTICOLORE PETITE
             BackgroundPlanetMulticolorSmall.prototype.context = this.bgContext;
             BackgroundPlanetMulticolorSmall.prototype.canvasWidth = this.planetMulticolorSmallCanvas.width;
             BackgroundPlanetMulticolorSmall.prototype.canvasHeight = this.planetMulticolorSmallCanvas.height;
-
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE VENUS PETITE
             BackgroundPlanetVenusSmall.prototype.context = this.bgContext;
             BackgroundPlanetVenusSmall.prototype.canvasWidth = this.planetVenusSmallCanvas.width;
@@ -1423,6 +1443,10 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             BackgroundPlanetEarthBlue.prototype.context = this.bgContext;
             BackgroundPlanetEarthBlue.prototype.canvasWidth = this.planetEarthBlueCanvas.width;
             BackgroundPlanetEarthBlue.prototype.canvasHeight = this.planetEarthBlueCanvas.height;
+                                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE DÉSERT
+            BackgroundPlanetDesert.prototype.context = this.bgContext;
+            BackgroundPlanetDesert.prototype.canvasWidth = this.planetDesertCanvas.width;
+            BackgroundPlanetDesert.prototype.canvasHeight = this.planetDesertCanvas.height;
 
 
                                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 1
@@ -1590,7 +1614,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE PLUTON
             this.backgroundPlanetPluton = new BackgroundPlanetPluton();
-            this.backgroundPlanetPluton.init(0,2000);
+            this.backgroundPlanetPluton.init(0,-35690);
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LUMIÈRE BLEUE PETITE
@@ -1605,6 +1629,9 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE TERRE BLEUE
             this.backgroundPlanetEarthBlue = new BackgroundPlanetEarthBlue();
             this.backgroundPlanetEarthBlue.init('395',-2125);
+                                                    // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE DÉSERT
+            this.backgroundPlanetDesert = new BackgroundPlanetDesert();
+            this.backgroundPlanetDesert.init('395',-12125);
 
 
                                                     // ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ ↓↓↓ PLANÈTE LAVE 1
@@ -1724,7 +1751,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
 
                                         // pool enemy
                                                                     // initialiser l'objet pool enemy
-            this.enemyPool = new Pool(30);
+            this.enemyPool = new Pool(32);
             this.enemyPool.init("enemy");
             this.spawnWave();
 
@@ -1743,12 +1770,12 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
             this.explosion = new SoundPool(20);
             this.explosion.init("explosion");
 
-            this.backgroundAudio = new Audio("sounds/music-game.wav");
+            this.backgroundAudio = new Audio("sounds/music-game.mp3");
             this.backgroundAudio.loop = true;
             this.backgroundAudio.volume = .50;
             this.backgroundAudio.load();
 
-            this.gameOverAudio = new Audio("sounds/game_over.wav");
+            this.gameOverAudio = new Audio("sounds/game-over.mp3");
             this.gameOverAudio.loop = true;
             this.gameOverAudio.volume = .50;
             this.gameOverAudio.load();
@@ -1762,11 +1789,11 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         var width = imageRepository.enemy.width;
         var x = 100;
         var y = -height;
-        var spacer = y * 1.5;
-        for (var i = 1; i <= 18; i++) {         // nombre ennemis
+        var spacer = y * 1.25;
+        for (var i = 1; i <= 32; i++) {         // nombre ennemis
             this.enemyPool.get(x,y,2);
             x += width + 25;
-            if (i % 6 == 0) {                   // nombre ennemis par lignes
+            if (i % 8 == 0) {                   // nombre ennemis par lignes
                 x = 100;
                 y += spacer
             }
@@ -1803,6 +1830,7 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         this.bgContext.clearRect(0,0, this.planetMulticolorSmallCanvas.width, this.planetMulticolorSmallCanvas.height);    // planète multicolore petite
         this.bgContext.clearRect(0,0, this.planetVenusSmallCanvas.width, this.planetMulticolorSmallCanvas.height);         // planète venus petite
         this.bgContext.clearRect(0,0, this.planetEarthBlueCanvas.width, this.planetEarthBlueCanvas.height);                // planète terre bleue
+        this.bgContext.clearRect(0,0, this.planetDesertCanvas.width, this.planetDesertCanvas.height);                      // planète désert
 
         this.bgContext.clearRect(0,0, this.planetLavaOneCanvas.width, this.planetLavaOneCanvas.height);                    // planète lave 1
         this.bgContext.clearRect(0,0, this.planetLavaTwoCanvas.width, this.planetLavaTwoCanvas.height);                    // planète lave 2
@@ -1852,12 +1880,13 @@ C'est pour empêcher l'animation de fonctionner constamment sur des navigateurs 
         this.backgroundMoonMiddle.init('425',-1125);                 // lune bleue
         this.backgroundMoonMiddle.init('150',-325);                  // lune grise
 
-        this.backgroundPlanetPluton.init(0,59655);                   // planète pluton
+        this.backgroundPlanetPluton.init(0,-29560);                  // planète pluton
 
         this.backgroundPlanetLightBlueSmall.init('275',-325);        // planète lumière bleue petite
         this.backgroundPlanetMulticolorSmall.init('375',-425);       // planète multicolore petite
         this.backgroundPlanetVenusSmall.init('95',-425);             // planète venus petite
-        this.backgroundPlanetVenusSmall.init('95',-2425);            // planète terre bleue
+        this.backgroundPlanetEarthBlue.init('95',-2425);             // planète terre bleue
+        this.backgroundPlanetDesert.init(0,-18425);                  // planète désert
 
         this.backgroundPlanetLavaOne.init('155',-2425);              // planète lave 1
         this.backgroundPlanetLavaTwo.init('295',-12425);             // planète lave 2
@@ -1936,8 +1965,8 @@ function SoundPool(maxSize) {
 		if (object == "laser") {
 			for (var i = 0; i < size; i++) {
 				// initialiser le son
-				laser = new Audio("sounds/laser.wav");
-				laser.volume = .0;
+				var laser = new Audio("sounds/laser.wav");
+				laser.volume = .12;
 				laser.load();
 				pool[i] = laser;
 			}
@@ -1945,7 +1974,7 @@ function SoundPool(maxSize) {
 		else if (object == "explosion") {
 			for (var i = 0; i < size; i++) {
 				var explosion = new Audio("sounds/explosion.wav");
-				explosion.volume = .0;
+				explosion.volume = .12;
 				explosion.load();
 				pool[i] = explosion;
 			}
@@ -2000,6 +2029,7 @@ function animate() {
     game.backgroundPlanetMulticolorSmall.draw();    // planète multicolore petite
     game.backgroundPlanetVenusSmall.draw();         // planète venus petite
     game.backgroundPlanetEarthBlue.draw();          // planète terre bleue
+    game.backgroundPlanetDesert.draw();             // planète désert
 
     game.backgroundPlanetLavaOne.draw();            // planète lave 1
     game.backgroundPlanetLavaTwo.draw();            // planète lave 2
